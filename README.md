@@ -1,24 +1,50 @@
 # README
+RUNTEQの基礎編カリキュラムのリポジトリ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Features
 
-Things you may want to cover:
+### Ruby Version
+- See `.ruby-version`.
 
-* Ruby version
+## Rails version
 
-* System dependencies
+- See `Gemfile`.
 
-* Configuration
+## Project initiation
 
-* Database creation
+- リポジトリのクローン
 
-* Database initialization
+```bash
+$ git@github.com:startup-technology/runteq_curriculum_normal.git
+```
 
-* How to run the test suite
+- Gemのインストール
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+$ bundle install --path vendor/bundle
+```
 
-* Deployment instructions
+- npmのインストール
 
-* ...
+```bash
+$ yarn install
+```
+
+### Configuration
+
+*ファイルの中身はご自身の環境に合わせて適宜変更してください*
+
+- データベースの設定
+
+```bash
+$ cp config/database.yml.default config/database.yml
+```
+
+- 環境変数の設定
+
+```bash
+$ EDITOR="vi" bundle exec rails credentials:edit
+
+slack:
+  webhook_url: 'hogehoge'
+```
