@@ -37,6 +37,7 @@ gem 'font-awesome-rails'
 gem 'jquery-rails'
 
 gem 'sorcery'
+gem 'pry-byebug'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
