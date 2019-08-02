@@ -9,8 +9,8 @@ RSpec.describe 'ログイン・ログアウト', type: :system do
       context '認証情報が正しい場合' do
         it 'ログインできること' do
           visit login_path
-          fill_in 'Email', with: user.email
-          fill_in 'Password', with: '12345678'
+          fill_in 'メールアドレス', with: user.email
+          fill_in 'パスワード', with: '12345678'
           click_button 'ログイン'
           expect(current_path).to eq root_path
           # expect(current_path).to eq boards_path
@@ -21,8 +21,8 @@ RSpec.describe 'ログイン・ログアウト', type: :system do
       context 'PWに誤りがある場合' do
         it 'ログインできないこと' do
           visit login_path
-          fill_in 'Email', with: user.email
-          fill_in 'Password', with: '1234'
+          fill_in 'メールアドレス', with: user.email
+          fill_in 'パスワード', with: '1234'
           click_button 'ログイン'
           expect(current_path).to eq login_path
           # expect(page).to have_content 'ログインに失敗しました'
