@@ -3,8 +3,8 @@ FactoryBot.define do
     email { Faker::Internet.unique.email }
     password { '12345678' }
     password_confirmation { '12345678' }
-    first_name { Gimei.name.first.hiragana }
-    last_name { Gimei.name.last.hiragana }
+    first_name { Faker::Name.first_name }
+    last_name { Faker::Name.last_name }
   end
 
   # trait :general do
