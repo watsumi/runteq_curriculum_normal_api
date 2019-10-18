@@ -14,11 +14,13 @@ RSpec.describe User, type: :model do
     expect(user2.errors[:email]).to include('has already been taken')
   end
 
-  it '姓名は必須項目であること' do
+  it 'メールアドレス姓名は必須項目であること' do
     user = build(:user)
+    user.email = nil
     user.first_name = nil
     user.last_name = nil
     user.valid?
+    expect(user.errors[:email]).to include("can't be blank")
     expect(user.errors[:first_name]).to include("can't be blank")
     expect(user.errors[:last_name]).to include("can't be blank")
   end
