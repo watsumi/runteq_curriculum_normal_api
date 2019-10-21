@@ -25,6 +25,8 @@ RSpec.describe 'ユーザー登録', type: :system do
       expect(current_path).to eq '/users'
       # expect(current_path).to eq boards_path
       expect(page).to have_content 'ユーザー登録に失敗しました'
+      # 個別のエラーメッセージが表示されること
+      expect(page).to have_content '姓を入力してください'
     end
   end
 end
