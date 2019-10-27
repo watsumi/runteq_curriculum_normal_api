@@ -125,76 +125,76 @@ RSpec.describe '掲示板', type: :system do
         end
       end
     end
-  #
-  #   describe '掲示板の更新' do
-  #     before do
-  #       board
-  #     end
-  #     context 'ログインしていない場合' do
-  #       it 'ログインページにリダイレクトされること' do
-  #         visit edit_board_path(board)
-  #         expect(current_path).to eq login_path
-  #         expect(page).to have_content 'ログインしてください'
-  #       end
-  #     end
-  #
-  #     context 'ログインしている場合' do
-  #       context '自分の掲示板' do
-  #         before do
-  #           login_as_user user
-  #           visit boards_path
-  #           find("#button-edit-#{board.id}").click
-  #         end
-  #         it '掲示板が更新できること' do
-  #           fill_in 'タイトル', with: '編集後テストタイトル'
-  #           fill_in '本文', with: '編集後テスト本文'
-  #           click_button '更新'
-  #           expect(current_path).to eq board_path(board)
-  #           expect(page).to have_content '掲示板を更新しました'
-  #           expect(page).to have_content 'テストタイトル'
-  #           expect(page).to have_content 'テスト本文'
-  #         end
-  #
-  #         it '掲示板の作成に失敗すること' do
-  #           fill_in 'タイトル', with: '編集後テストタイトル'
-  #           fill_in '本文', with: ''
-  #           click_button '更新'
-  #           expect(page).to have_content '掲示板を更新できませんでした'
-  #         end
-  #       end
-  #
-  #       context '他人の掲示板' do
-  #         it '編集ボタンが表示されないこと' do
-  #           login_as_general
-  #           visit boards_path
-  #           expect(page).not_to have_selector("#button-edit-#{board.id}")
-  #         end
-  #       end
-  #     end
-  #   end
-  #
-  #   describe '掲示板の削除' do
-  #     before do
-  #       board
-  #     end
-  #     context '自分の掲示板' do
-  #       it '掲示板が削除できること', js: true do
-  #         login_as_user user
-  #         visit boards_path
-  #         page.accept_confirm { find("#button-delete-#{board.id}").click }
-  #         expect(current_path).to eq boards_path
-  #         expect(page).to have_content '掲示板を削除しました'
-  #       end
-  #     end
-  #
-  #     context '他人の掲示板' do
-  #       it '削除ボタンが表示されないこと' do
-  #         login_as_general
-  #         visit boards_path
-  #         expect(page).not_to have_selector("#button-delete-#{board.id}")
-  #       end
-  #     end
-  #   end
+
+    describe '掲示板の更新' do
+      before do
+        board
+      end
+      context 'ログインしていない場合' do
+        it 'ログインページにリダイレクトされること' do
+          visit edit_board_path(board)
+          expect(current_path).to eq login_path
+          expect(page).to have_content 'ログインしてください'
+        end
+      end
+
+      context 'ログインしている場合' do
+        context '自分の掲示板' do
+          before do
+            login_as_user user
+            visit boards_path
+            find("#button-edit-#{board.id}").click
+          end
+          it '掲示板が更新できること' do
+            fill_in 'タイトル', with: '編集後テストタイトル'
+            fill_in '本文', with: '編集後テスト本文'
+            click_button '更新する'
+            expect(current_path).to eq board_path(board)
+            expect(page).to have_content '掲示板を更新しました'
+            expect(page).to have_content 'テストタイトル'
+            expect(page).to have_content 'テスト本文'
+          end
+
+          it '掲示板の作成に失敗すること' do
+            fill_in 'タイトル', with: '編集後テストタイトル'
+            fill_in '本文', with: ''
+            click_button '更新する'
+            expect(page).to have_content '掲示板を更新できませんでした'
+          end
+        end
+
+        context '他人の掲示板' do
+          it '編集ボタンが表示されないこと' do
+            login_as_general
+            visit boards_path
+            expect(page).not_to have_selector("#button-edit-#{board.id}")
+          end
+        end
+      end
+    end
+
+    describe '掲示板の削除' do
+      before do
+        board
+      end
+      context '自分の掲示板' do
+        it '掲示板が削除できること', js: true do
+          login_as_user user
+          visit boards_path
+          page.accept_confirm { find("#button-delete-#{board.id}").click }
+          expect(current_path).to eq boards_path
+          expect(page).to have_content '掲示板を削除しました'
+        end
+      end
+
+      context '他人の掲示板' do
+        it '削除ボタンが表示されないこと' do
+          login_as_general
+          visit boards_path
+          expect(page).not_to have_selector("#button-delete-#{board.id}")
+        end
+      end
+    end
   #
   #   describe '掲示板のブックマーク一覧' do
   #     before do
