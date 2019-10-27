@@ -8,7 +8,9 @@
         </h4>
         <div class='mr10 float-right'>
           <a href="#"><%= icon 'fas', 'trash', class: 'pr-1' %></a>
-          <a href="#"><%= icon 'fa', 'pen' %></a>
+          <%=link_to edit_board_path(board) do %>
+            <%= icon 'fa', 'pen' %>
+          <% end %>
         </div>
         <ul class="list-inline">
           <li class="list-inline-item">

@@ -22,6 +22,20 @@ class BoardsController < ApplicationController
     @comment = Comment.new
   end
 
+  def edit
+    @board = current_user.boards.find(params[:id])
+  end
+
+  def update
+    @board = current_user.boards.find(params[:id])
+    if @board.update(board_params)
+      redirect_to @board, success: t('defaults.message.updated', item: Board.model_name.human)
+    else
+      flash.now['danger'] = t('defaults.message.not_updated', item: Board.model_name.human)
+      render :edit
+    end
+  end
+
   private
 
   def board_params
