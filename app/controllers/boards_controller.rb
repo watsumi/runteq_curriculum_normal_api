@@ -36,6 +36,12 @@ class BoardsController < ApplicationController
     end
   end
 
+  def destroy
+    @board = current_user.boards.find(params[:id])
+    @board.destroy!
+    redirect_to boards_path, success: t('defaults.message.deleted', item: Board.model_name.human)
+  end
+
   private
 
   def board_params
