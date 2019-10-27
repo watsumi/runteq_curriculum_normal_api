@@ -8,6 +8,8 @@
         </h4>
         <% if current_user.own?(board) %>
           <%= render 'crud_menus', board: board %>
+        <% else %>
+          <%= render 'bookmark_button', board: board  %>
         <% end %>
         <ul class="list-inline">
           <li class="list-inline-item">
