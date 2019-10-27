@@ -35,6 +35,8 @@ ja:
       no_result: '掲示板がありません。'
     new:
       title: '掲示板作成'
+    show:
+      title: '掲示板詳細'
     edit:
       title: '掲示板編集'
     bookmarks:
