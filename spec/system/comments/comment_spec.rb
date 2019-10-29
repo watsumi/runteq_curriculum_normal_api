@@ -32,7 +32,7 @@ RSpec.describe 'コメント', type: :system do
           fill_in 'コメント', with: '新規コメント'
           click_on '投稿'
         # end
-        # sleep 0.1 # sleepしないとテストが通らない
+        sleep 0.1 # sleepしないとテストが通らない
         comment = Comment.last
         within("#comment-#{comment.id}") do
           expect(page).to have_content me.decorate.full_name
@@ -46,33 +46,33 @@ RSpec.describe 'コメント', type: :system do
           fill_in 'コメント', with: ''
           click_on '投稿'
         # end
-        expect(page).to have_content 'コメントを作成できませんでした'
+        expect(page).to have_content 'コメントを入力してください'
       end
     end
 
     describe 'コメントの編集' do
-      # context '自分のコメントの場合' do
-      #   it 'コメントを編集できること', js: true do
-      #     login_as_user me
-      #     visit board_path board
-      #     within("#comment-#{comment_by_me.id}") do
-      #       find('.js-edit-comment-button').click
-      #       fill_in ("js-textarea-comment-#{comment_by_me.id}"), with: '編集後コメント'
-      #       click_on '更新'
-      #       expect(page).to have_content '編集後コメント'
-      #     end
-      #   end
-      #   it 'コメントの編集に失敗すること', js: true do
-      #     login_as_user me
-      #     visit board_path board
-      #     within("#comment-#{comment_by_me.id}") do
-      #       find('.js-edit-comment-button').click
-      #       fill_in ("js-textarea-comment-#{comment_by_me.id}"), with: ''
-      #       click_on '更新'
-      #       expect(page).to have_content 'コメントを入力してください'
-      #     end
-      #   end
-      # end
+      context '自分のコメントの場合' do
+        it 'コメントを編集できること', js: true do
+          login_as_user me
+          visit board_path board
+          within("#comment-#{comment_by_me.id}") do
+            find('.js-edit-comment-button').click
+            fill_in ("js-textarea-comment-#{comment_by_me.id}"), with: '編集後コメント'
+            click_on '更新'
+            expect(page).to have_content '編集後コメント'
+          end
+        end
+        it 'コメントの編集に失敗すること', js: true do
+          login_as_user me
+          visit board_path board
+          within("#comment-#{comment_by_me.id}") do
+            find('.js-edit-comment-button').click
+            fill_in ("js-textarea-comment-#{comment_by_me.id}"), with: ''
+            click_on '更新'
+            expect(page).to have_content 'コメントを入力してください'
+          end
+        end
+      end
 
       context '他人のコメントの場合' do
         it '編集ボタン・削除ボタンが表示されないこと' do
@@ -86,15 +86,15 @@ RSpec.describe 'コメント', type: :system do
       end
     end
 
-    # describe 'コメントの削除' do
-    #   it 'コメントを削除できること' do
-    #     login_as_user me
-    #     visit board_path board
-    #     within("#comment-#{comment_by_me.id}") do
-    #       page.accept_confirm { find('.js-delete-comment-button').click }
-    #     end
-    #     expect(page).not_to have_content comment_by_me.body
-    #   end
-    # end
+    describe 'コメントの削除' do
+      it 'コメントを削除できること' do
+        login_as_user me
+        visit board_path board
+        within("#comment-#{comment_by_me.id}") do
+          page.accept_confirm { find('.js-delete-comment-button').click }
+        end
+        expect(page).not_to have_content comment_by_me.body
+      end
+    end
   end
 end
