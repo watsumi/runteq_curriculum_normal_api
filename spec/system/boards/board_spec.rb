@@ -41,14 +41,14 @@ RSpec.describe '掲示板', type: :system do
             expect(page).to have_content I18n.l(board.created_at, format: :long)
           end
 
-          # context '21件以上ある場合' do
-          #   let!(:boards) { create_list(:board, 21) }
-          #   it 'ページングが表示されること' do
-          #     login_as_general
-          #     visit boards_path
-          #     expect(page).to have_selector('.pagination')
-          #   end
-          # end
+          context '21件以上ある場合' do
+            let!(:boards) { create_list(:board, 21) }
+            it 'ページングが表示されること' do
+              login_as_general
+              visit boards_path
+              expect(page).to have_selector('.pagination')
+            end
+          end
         end
       end
     end
@@ -219,6 +219,18 @@ RSpec.describe '掲示板', type: :system do
           click_on 'ブックマーク一覧'
           expect(current_path).to eq bookmarks_boards_path
           expect(page).to have_content board.title
+        end
+      end
+
+      context '21件以上ある場合' do
+        let!(:boards) { create_list(:board, 21) }
+        it 'ページングが表示されること' do
+          boards.each do |board|
+            Bookmark.create(user: user, board: board)
+          end
+          login_as_user user
+          visit bookmarks_boards_path
+          expect(page).to have_selector('.pagination')
         end
       end
     end
