@@ -92,6 +92,20 @@ RSpec.describe '共通系', type: :system do
           expect(page).to have_title "#{board.title} | RUNTEQ BOARD APP"
         end
       end
+
+      describe 'プロフィールページ' do
+        it '正しいタイトルが表示されていること' do
+          visit profile_path
+          expect(page).to have_title 'プロフィール | RUNTEQ BOARD APP'
+        end
+      end
+
+      describe 'プロフィール編集ページ' do
+        it '正しいタイトルが表示されていること' do
+          visit edit_profile_path
+          expect(page).to have_title 'プロフィール編集 | RUNTEQ BOARD APP'
+        end
+      end
     end
   end
 end
