@@ -106,6 +106,22 @@ RSpec.describe '共通系', type: :system do
           expect(page).to have_title 'プロフィール編集 | RUNTEQ BOARD APP'
         end
       end
+
+      describe 'パスワードリセット申請ページ' do
+        it '正しいタイトルが表示されていること' do
+          visit new_password_reset_path
+          expect(page).to have_title 'パスワードリセット申請 | RUNTEQ BOARD APP'
+        end
+      end
+
+      describe 'パスワードリセットページ' do
+        it '正しいタイトルが表示されていること' do
+          user = create(:user)
+          user.generate_reset_password_token!
+          visit edit_password_reset_url(user.reset_password_token)
+          expect(page).to have_title 'パスワードリセット | RUNTEQ BOARD APP'
+        end
+      end
     end
   end
 end
