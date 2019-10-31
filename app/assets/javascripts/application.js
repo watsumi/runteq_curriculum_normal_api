@@ -15,4 +15,5 @@
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require activestorage
-//= require_tree .
+//= require edit_comment
+//= require preview
