@@ -7,11 +7,11 @@ FactoryBot.define do
     last_name { Faker::Name.last_name }
   end
 
-  # trait :general do
-  #   role { :general }
-  # end
-  #
-  # trait :admin do
-  #   role { :admin }
-  # end
+  trait :general do
+    role { :general }
+  end
+
+  trait :admin do
+    role { :admin }
+  end
 end

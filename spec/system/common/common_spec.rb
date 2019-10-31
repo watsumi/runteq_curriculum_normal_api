@@ -123,5 +123,28 @@ RSpec.describe '共通系', type: :system do
         end
       end
     end
+
+    context 'アドミン系画面' do
+      context 'ログイン前画面' do
+        describe 'ログインページ' do
+          it '正しいタイトルが表示されていること' do
+            visit admin_login_path
+            expect(page).to have_title 'ログイン | RUNTEQ BOARD APP(管理画面)'
+          end
+        end
+      end
+
+      context 'ログイン後画面' do
+        before do
+          login_as_admin
+        end
+        describe 'ダッシュボード' do
+          it '正しいタイトルが表示されていること' do
+            visit admin_root_path
+            expect(page).to have_title 'ダッシュボード | RUNTEQ BOARD APP(管理画面)'
+          end
+        end
+      end
+    end
   end
 end
