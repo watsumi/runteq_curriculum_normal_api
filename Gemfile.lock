@@ -123,6 +123,8 @@ GEM
       dry-equalizer (~> 0.2, >= 0.2.2)
       dry-inflector (~> 0.1, >= 0.1.2)
       dry-logic (~> 1.0, >= 1.0.2)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
     erubi (1.9.0)
     execjs (2.7.0)
     factory_bot (5.1.1)
@@ -365,6 +367,7 @@ DEPENDENCIES
   carrierwave
   config
   draper
+  enum_help
   factory_bot_rails
   faker
   font-awesome-sass (~> 5.11.2)
