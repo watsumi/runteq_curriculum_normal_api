@@ -144,6 +144,52 @@ RSpec.describe '共通系', type: :system do
             expect(page).to have_title 'ダッシュボード | RUNTEQ BOARD APP(管理画面)'
           end
         end
+
+        describe '掲示板一覧' do
+          it '正しいタイトルが表示されていること' do
+            visit admin_boards_path
+            expect(page).to have_title '掲示板一覧 | RUNTEQ BOARD APP(管理画面)'
+          end
+        end
+
+        describe '掲示板詳細' do
+          it '正しいタイトルが表示されていること' do
+            board = create(:board)
+            visit admin_board_path(board)
+            expect(page).to have_title '掲示板詳細 | RUNTEQ BOARD APP(管理画面)'
+          end
+        end
+
+        describe '掲示板編集' do
+          it '正しいタイトルが表示されていること' do
+            board = create(:board)
+            visit edit_admin_board_path(board)
+            expect(page).to have_title '掲示板編集 | RUNTEQ BOARD APP(管理画面)'
+          end
+        end
+
+        describe 'ユーザー一覧' do
+          it '正しいタイトルが表示されていること' do
+            visit admin_users_path
+            expect(page).to have_title 'ユーザー一覧 | RUNTEQ BOARD APP(管理画面)'
+          end
+        end
+
+        describe 'ユーザー詳細' do
+          it '正しいタイトルが表示されていること' do
+            user = create(:user)
+            visit admin_user_path(user)
+            expect(page).to have_title 'ユーザー詳細 | RUNTEQ BOARD APP(管理画面)'
+          end
+        end
+
+        describe 'ユーザー編集' do
+          it '正しいタイトルが表示されていること' do
+            user = create(:user)
+            visit edit_admin_user_path(user)
+            expect(page).to have_title 'ユーザー編集 | RUNTEQ BOARD APP(管理画面)'
+          end
+        end
       end
     end
   end

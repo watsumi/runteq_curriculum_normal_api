@@ -86,7 +86,7 @@ ja:
       index:
         title: 'ユーザー一覧'
       edit:
-        title: 'ユーザ編集'
+        title: 'ユーザー編集'
       show:
         title: 'ユーザー詳細'
     boards:
