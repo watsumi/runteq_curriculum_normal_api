@@ -27,6 +27,14 @@
         </div>
         <%= f.submit (t 'defaults.register'), class: 'btn btn-primary' %>
       <% end %>
+
+      <div class="text-center mb-3">
+        <%= link_to auth_at_provider_path(provider: :facebook), class: 'facebook-button' do %>
+          <%= icon 'fab', 'facebook-f' %>
+          <%= t('defaults.facebook_login') %>
+        <% end %>
+      </div>
+
       <div class='text-center'>
         <%= link_to (t '.to_login_page'), login_path %>
       </div>
