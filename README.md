@@ -39,12 +39,3 @@ $ yarn install
 ```bash
 $ cp config/database.yml.default config/database.yml
 ```
-
-- 環境変数の設定
-
-```bash
-$ EDITOR="vi" bundle exec rails credentials:edit
-
-slack:
-  webhook_url: 'hogehoge'
-```
