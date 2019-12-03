@@ -121,7 +121,7 @@ RSpec.describe '掲示板', type: :system do
           # 個別のエラーメッセージが表示されること
           expect(page).to have_content '本文を入力してください'
           # 拡張子の制限チェック
-          expect(page).to have_content 'ファイルのアップロードは許可されていません。'
+          expect(page).to have_content 'サムネイルは jpg, jpeg, gif, pngの形式でアップロードしてください'
         end
       end
     end
