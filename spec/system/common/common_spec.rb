@@ -6,24 +6,22 @@ RSpec.describe '共通系', type: :system do
   end
   describe 'ヘッダー' do
     it 'ヘッダーが正しく表示されていること' do
-      expect(page).to have_content '掲示板'
-      expect(page).to have_content 'ブックマーク一覧'
-
+      expect(page).to have_content('掲示板'), 'ヘッダーに「掲示板」というテキストが表示されていません'
       click_on('掲示板')
-      expect(page).to have_content '掲示板一覧'
-      expect(page).to have_content '掲示板作成'
+      expect(page).to have_content('掲示板一覧'), 'ヘッダーに「掲示板一覧」というテキストが表示されていません'
+      expect(page).to have_content('掲示板作成'), 'ヘッダーに「掲示板作成」というテキストが表示されていません'
+
+      expect(page).to have_content('ブックマーク一覧'), 'ヘッダーに「ブックマーク一覧」というテキストが表示されていません'
 
       find('#header-profile').click
-      # login_user = User.first
-      # expect(page).to have_content "#{login_user.last_name} #{login_user.first_name}"
-      expect(page).to have_content 'プロフィール'
-      expect(page).to have_content 'ログアウト'
+      expect(page).to have_content('プロフィール'), 'ヘッダーに「プロフィール」というテキストが表示されていません'
+      expect(page).to have_content('ログアウト'), 'ヘッダーに「ログアウト」というテキストが表示されていません'
     end
   end
 
   describe 'フッター' do
     it 'フッターが正しく表示されていること' do
-      expect(page).to have_content 'Copyright © 2019. RUNTEQ'
+      expect(page).to have_content('Copyright'), '「Copyright」というテキストが表示されていません'
     end
   end
 end
