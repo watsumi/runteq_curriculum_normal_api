@@ -10,7 +10,7 @@ RSpec.describe '掲示板', type: :system do
         it 'ログインページにリダイレクトされること' do
           visit boards_path
           expect(current_path).to eq login_path
-          expect(page).to have_content 'ログインしてください'
+          expect(page).to have_content('ログインしてください'), 'フラッシュメッセージ「ログインしてください」が表示されていません'
         end
       end
 
@@ -19,14 +19,14 @@ RSpec.describe '掲示板', type: :system do
           login_as_general
           click_on('掲示板')
           click_on('掲示板一覧')
-          expect(current_path).to eq boards_path
+          expect(current_path).to eq(boards_path), 'ヘッダーのリンクから掲示板一覧画面へ遷移できません'
         end
 
         context '掲示板が一件もない場合' do
           it '何もない旨のメッセージが表示されること' do
             login_as_general
             visit boards_path
-            expect(page).to have_content '掲示板がありません。'
+            expect(page).to have_content('掲示板がありません。'), '掲示板が一件もない場合、「掲示板がありません」というメッセージが表示されていません'
           end
         end
 
@@ -35,10 +35,10 @@ RSpec.describe '掲示板', type: :system do
             board
             login_as_general
             visit boards_path
-            expect(page).to have_content board.title
-            expect(page).to have_content board.user.decorate.full_name
-            expect(page).to have_content board.body
-            expect(page).to have_content I18n.l(board.created_at, format: :long)
+            expect(page).to have_content(board.title), '掲示板一覧画面に掲示板のタイトルが表示されていません'
+            expect(page).to have_content(board.user.decorate.full_name), '掲示板一覧画面に投稿者のフルネームが表示されていません'
+            expect(page).to have_content(board.body), '掲示板一覧画面に掲示板の本文が表示されていません'
+            expect(page).to have_content(I18n.l(board.created_at, format: :long)), '掲示板一覧画面に掲示板の投稿日時が正しいフォーマットで表示されていません'
           end
 
           # context '21件以上ある場合' do
