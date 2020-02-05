@@ -58,7 +58,7 @@ RSpec.describe '掲示板', type: :system do
         it 'ログインページにリダイレクトされること' do
           visit board_path(board)
           expect(current_path).to eq login_path
-          expect(page).to have_content 'ログインしてください'
+          expect(page).to have_content('ログインしてください'), 'フラッシュメッセージ「ログインしてください」が表示されていません'
         end
       end
 
@@ -72,10 +72,10 @@ RSpec.describe '掲示板', type: :system do
           within "#board-id-#{board.id}" do
             click_on board.title
           end
-          expect(page).to have_content board.title
-          expect(page).to have_content board.user.decorate.full_name
-          expect(page).to have_content board.body
-          expect(page).to have_content I18n.l(board.created_at, format: :long)
+          expect(page).to have_content(board.title), '掲示板一覧画面に掲示板のタイトルが表示されていません'
+          expect(page).to have_content(board.user.decorate.full_name), '掲示板一覧画面に投稿者のフルネームが表示されていません'
+          expect(page).to have_content(board.body), '掲示板一覧画面に掲示板の本文が表示されていません'
+          expect(page).to have_content(I18n.l(board.created_at, format: :long)), '掲示板一覧画面に掲示板の投稿日時が正しいフォーマットで表示されていません'
         end
       end
     end
@@ -148,16 +148,16 @@ RSpec.describe '掲示板', type: :system do
             fill_in '本文', with: '編集後テスト本文'
             click_button '更新する'
             expect(current_path).to eq board_path(board)
-            expect(page).to have_content '掲示板を更新しました'
-            expect(page).to have_content 'テストタイトル'
-            expect(page).to have_content 'テスト本文'
+            expect(page).to have_content('掲示板を更新しました'), 'フラッシュメッセージ「掲示板を更新しました」が表示されていません'
+            expect(page).to have_content('テストタイトル'), '更新後のタイトルが表示されていません'
+            expect(page).to have_content('テスト本文'), '更新後の本文が表示されていません'
           end
 
           it '掲示板の作成に失敗すること' do
             fill_in 'タイトル', with: '編集後テストタイトル'
             fill_in '本文', with: ''
             click_button '更新する'
-            expect(page).to have_content '掲示板を更新できませんでした'
+            expect(page).to have_content('掲示板を更新できませんでした'), 'フラッシュメッセージ「掲示板を更新できませんでした」が表示されていません'
           end
         end
 
@@ -165,7 +165,7 @@ RSpec.describe '掲示板', type: :system do
           it '編集ボタンが表示されないこと' do
             login_as_general
             visit boards_path
-            expect(page).not_to have_selector("#button-edit-#{board.id}")
+            expect(page).not_to have_selector("#button-edit-#{board.id}"), '他人の掲示板に対して編集ボタンが表示されています'
           end
         end
       end
@@ -181,7 +181,7 @@ RSpec.describe '掲示板', type: :system do
           visit boards_path
           page.accept_confirm { find("#button-delete-#{board.id}").click }
           expect(current_path).to eq boards_path
-          expect(page).to have_content '掲示板を削除しました'
+          expect(page).to have_content('掲示板を削除しました'), 'フラッシュメッセージ「掲示板を削除しました」が表示されていません'
         end
       end
 
@@ -189,7 +189,7 @@ RSpec.describe '掲示板', type: :system do
         it '削除ボタンが表示されないこと' do
           login_as_general
           visit boards_path
-          expect(page).not_to have_selector("#button-delete-#{board.id}")
+          expect(page).not_to have_selector("#button-delete-#{board.id}"), '他人の掲示板に対して削除ボタンが表示されています'
         end
       end
     end
