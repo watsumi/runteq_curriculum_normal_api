@@ -85,7 +85,7 @@ RSpec.describe '掲示板', type: :system do
         it 'ログインページにリダイレクトされること' do
           visit new_board_path
           expect(current_path).to eq login_path
-          expect(page).to have_content 'ログインしてください'
+          expect(page).to have_content('ログインしてください'), 'フラッシュメッセージ「ログインしてください」が表示されていません'
         end
       end
 
@@ -102,16 +102,16 @@ RSpec.describe '掲示板', type: :system do
           click_button '登録する'
           # board = Board.last
           expect(current_path).to eq boards_path
-          expect(page).to have_content '掲示板を作成しました'
-          expect(page).to have_content 'テストタイトル'
-          expect(page).to have_content 'テスト本文'
+          expect(page).to have_content('掲示板を作成しました'), 'フラッシュメッセージ「掲示板を作成しました」が表示されていません'
+          expect(page).to have_content('テストタイトル'), '作成した掲示板のタイトルが表示されていません'
+          expect(page).to have_content('テスト本文'), '作成した掲示板の本文が表示されていません'
         end
 
         it '掲示板の作成に失敗すること' do
           fill_in 'タイトル', with: 'テストタイトル'
           click_button '登録する'
-          expect(page).to have_content '掲示板を作成できませんでした'
-          expect(page).to have_field('タイトル', with: 'テストタイトル')
+          expect(page).to have_content('掲示板を作成できませんでした'), 'フラッシュメッセージ「掲示板を作成できませんでした」が表示されていません'
+          expect(page).to have_field('タイトル', with: 'テストタイトル'), '入力したタイトルがフォームに残っていません'
         end
       end
     end
