@@ -16,10 +16,8 @@ RSpec.describe 'コメント', type: :system do
         login_as_user me
         visit board_path board
         within('#js-table-comment') do
-          expect(page).to have_content comment_by_me.body
-          expect(page).to have_content comment_by_me.user.decorate.full_name
-          expect(page).to have_content comment_by_others.body
-          expect(page).to have_content comment_by_others.user.decorate.full_name
+          expect(page).to have_content(comment_by_me.body), 'コメントの本文が表示されていません'
+          expect(page).to have_content(comment_by_me.user.decorate.full_name), 'コメントの投稿者のフルネームが表示されていません'
         end
       end
     end
@@ -35,8 +33,8 @@ RSpec.describe 'コメント', type: :system do
         # sleep 0.1 # sleepしないとテストが通らない
         comment = Comment.last
         within("#comment-#{comment.id}") do
-          expect(page).to have_content me.decorate.full_name
-          expect(page).to have_content '新規コメント'
+          expect(page).to have_content(me.decorate.full_name), '新規作成したコメントの投稿者のフルネームが表示されていません'
+          expect(page).to have_content('新規コメント'), '新規作成したコメントの本文が表示されていません'
         end
       end
       it 'コメントの作成に失敗すること', js: true do
@@ -46,7 +44,7 @@ RSpec.describe 'コメント', type: :system do
           fill_in 'コメント', with: ''
           click_on '投稿'
         # end
-        expect(page).to have_content 'コメントを作成できませんでした'
+        expect(page).to have_content('コメントを作成できませんでした'), 'コメント作成失敗時のエラーメッセージ「コメントを作成できませんでした」が表示されていません'
       end
     end
 
@@ -79,8 +77,8 @@ RSpec.describe 'コメント', type: :system do
           login_as_user me
           visit board_path board
           within("#comment-#{comment_by_others.id}") do
-            expect(page).not_to have_selector('.js-edit-comment-button')
-            expect(page).not_to have_selector('.js-delete-comment-button')
+            expect(page).not_to have_selector('.js-edit-comment-button'), '他人のコメントに対して編集ボタンが表示されてしまっています'
+            expect(page).not_to have_selector('.js-delete-comment-button'), '他人のコメントに対して削除ボタンが表示されてしまっています'
           end
         end
       end
