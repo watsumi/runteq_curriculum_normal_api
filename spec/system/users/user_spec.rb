@@ -13,7 +13,7 @@ RSpec.describe 'ユーザー登録', type: :system do
       click_button '登録'
       expect(current_path).to eq login_path
       # expect(current_path).to eq boards_path
-      expect(page).to have_content 'ユーザー登録が完了しました'
+      expect(page).to have_content('ユーザー登録が完了しました'), 'フラッシュメッセージ「ユーザー登録が完了しました」が表示されていません'
     end
   end
 
@@ -24,7 +24,7 @@ RSpec.describe 'ユーザー登録', type: :system do
       click_button '登録'
       expect(current_path).to eq '/users'
       # expect(current_path).to eq boards_path
-      expect(page).to have_content 'ユーザー登録に失敗しました'
+      expect(page).to have_content('ユーザー登録に失敗しました'), 'フラッシュメッセージ「ユーザー登録に失敗しました」が表示されていません'
     end
   end
 end
