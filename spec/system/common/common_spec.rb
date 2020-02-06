@@ -110,7 +110,7 @@ RSpec.describe '共通系', type: :system do
       describe 'パスワードリセット申請ページ' do
         it '正しいタイトルが表示されていること' do
           visit new_password_reset_path
-          expect(page).to have_title 'パスワードリセット申請 | RUNTEQ BOARD APP'
+          expect(page).to have_title('パスワードリセット申請 | RUNTEQ BOARD APP'), 'パスワードリセット申請ページのタイトルが「パスワードリセット申請 | RUNTEQ BOARD APP」ではありません'
         end
       end
 
@@ -119,7 +119,7 @@ RSpec.describe '共通系', type: :system do
           user = create(:user)
           user.generate_reset_password_token!
           visit edit_password_reset_url(user.reset_password_token)
-          expect(page).to have_title 'パスワードリセット | RUNTEQ BOARD APP'
+          expect(page).to have_title('パスワードリセット | RUNTEQ BOARD APP'), 'パスワードリセットページのタイトルが「パスワードリセット | RUNTEQ BOARD APP」ではありません'
         end
       end
     end
