@@ -129,7 +129,7 @@ RSpec.describe '共通系', type: :system do
         describe 'ログインページ' do
           it '正しいタイトルが表示されていること' do
             visit admin_login_path
-            expect(page).to have_title 'ログイン | RUNTEQ BOARD APP(管理画面)'
+            expect(page).to have_title('ログイン | RUNTEQ BOARD APP(管理画面)'), '管理画面のログインページのタイトルが「ログイン | RUNTEQ BOARD APP(管理画面)」ではありません'
           end
         end
       end
@@ -141,7 +141,7 @@ RSpec.describe '共通系', type: :system do
         describe 'ダッシュボード' do
           it '正しいタイトルが表示されていること' do
             visit admin_root_path
-            expect(page).to have_title 'ダッシュボード | RUNTEQ BOARD APP(管理画面)'
+            expect(page).to have_title('ダッシュボード | RUNTEQ BOARD APP(管理画面)'), '管理画面のダッシュボードのタイトルが「ダッシュボード | RUNTEQ BOARD APP(管理画面)」ではありません'
           end
         end
       end
