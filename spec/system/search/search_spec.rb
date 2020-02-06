@@ -20,8 +20,8 @@ RSpec.describe '検索機能', type: :system do
           fill_in 'q_title_or_body_cont', with: 'Web'
           click_on '検索'
           expect(current_path).to eq boards_path
-          expect(page).to have_content board1.title
-          expect(page).not_to have_content board2.title
+          expect(page).to have_content(board1.title), '掲示板タイトルでの検索機能が正しく機能していません'
+          expect(page).not_to have_content(board2.title), '掲示板タイトルでの検索機能が正しく機能していません'
         end
       end
 
@@ -30,8 +30,8 @@ RSpec.describe '検索機能', type: :system do
           fill_in 'q_title_or_body_cont', with: '必要'
           click_on '検索'
           expect(current_path).to eq boards_path
-          expect(page).to have_content board2.title
-          expect(page).not_to have_content board1.title
+          expect(page).to have_content(board2.title), '掲示板本文での検索機能が正しく機能していません'
+          expect(page).not_to have_content(board1.title), '掲示板本文での検索機能が正しく機能していません'
         end
       end
     end
@@ -41,7 +41,7 @@ RSpec.describe '検索機能', type: :system do
         fill_in 'q_title_or_body_cont', with: '一件もヒットしないよ'
         click_on '検索'
         expect(current_path).to eq boards_path
-        expect(page).to have_content '掲示板がありません'
+        expect(page).to have_content('掲示板がありません'), '1件もヒットしない場合、「掲示板がありません」というメッセージが表示されていません'
       end
     end
   end
@@ -63,10 +63,10 @@ RSpec.describe '検索機能', type: :system do
           fill_in 'q_title_or_body_cont', with: 'Web'
           click_on '検索'
           expect(current_path).to eq bookmarks_boards_path
-          expect(page).to have_content board1.title
-          expect(page).not_to have_content board2.title
-          expect(page).not_to have_content board3.title
-          expect(page).not_to have_content board4.title
+          expect(page).to have_content(board1.title), '掲示板タイトルでの検索機能が正しく機能していません'
+          expect(page).not_to have_content(board2.title), '掲示板タイトルでの検索機能が正しく機能していません'
+          expect(page).not_to have_content(board3.title), '掲示板タイトルでの検索機能が正しく機能していません'
+          expect(page).not_to have_content(board4.title), '掲示板タイトルでの検索機能が正しく機能していません'
         end
       end
 
@@ -75,10 +75,10 @@ RSpec.describe '検索機能', type: :system do
           fill_in 'q_title_or_body_cont', with: '必要'
           click_on '検索'
           expect(current_path).to eq bookmarks_boards_path
-          expect(page).to have_content board4.title
-          expect(page).not_to have_content board1.title
-          expect(page).not_to have_content board2.title
-          expect(page).not_to have_content board3.title
+          expect(page).to have_content(board4.title), '掲示板本文での検索機能が正しく機能していません'
+          expect(page).not_to have_content(board1.title), '掲示板本文での検索機能が正しく機能していません'
+          expect(page).not_to have_content(board2.title), '掲示板本文での検索機能が正しく機能していません'
+          expect(page).not_to have_content(board3.title), '掲示板本文での検索機能が正しく機能していません'
         end
       end
     end
@@ -89,7 +89,7 @@ RSpec.describe '検索機能', type: :system do
         fill_in 'q_title_or_body_cont', with: '一件もヒットしないよ'
         click_on '検索'
         expect(current_path).to eq bookmarks_boards_path
-        expect(page).to have_content 'ブックマーク中の掲示板がありません'
+        expect(page).to have_content('ブックマーク中の掲示板がありません'), '1件もヒットしない場合、「ブックマーク中の掲示板がありません」というメッセージが表示されていません'
       end
     end
   end
