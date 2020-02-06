@@ -10,8 +10,8 @@ RSpec.describe 'プロフィール', type: :system do
     find('#header-profile').click
     click_on 'プロフィール'
     expect(current_path).to eq profile_path
-    expect(page).to have_content user.email
-    expect(page).to have_content user.decorate.full_name
+    expect(page).to have_content(user.email), 'プロフィールページにメールアドレスが表示されていません'
+    expect(page).to have_content(user.decorate.full_name), 'プロフィールページにフルネームが表示されていません'
   end
 
   it 'プロフィールの編集ができること' do
@@ -25,9 +25,9 @@ RSpec.describe 'プロフィール', type: :system do
     attach_file('アバター', file_path)
     click_button '更新する'
     expect(current_path).to eq profile_path
-    expect(page).to have_content 'ユーザーを更新しました'
-    expect(page).to have_content 'edit@example.com'
-    expect(page).to have_content '編集後姓 編集後名'
+    expect(page).to have_content('ユーザーを更新しました'), 'フラッシュメッセージ「ユーザーを更新しました」が表示されていません'
+    expect(page).to have_content('edit@example.com'), '更新後のメールアドレスが表示されていません'
+    expect(page).to have_content('編集後姓 編集後名'), '更新後のフルネームが表示されていません'
   end
 
   it 'プロフィールの編集に失敗すること' do
@@ -38,10 +38,10 @@ RSpec.describe 'プロフィール', type: :system do
     fill_in '姓', with: ''
     fill_in '名', with: ''
     click_button '更新する'
-    expect(page).to have_content 'ユーザーを更新できませんでした'
-    expect(page).to have_content 'メールアドレスを入力してください'
-    expect(page).to have_content '姓を入力してください'
-    expect(page).to have_content '名を入力してください'
+    expect(page).to have_content('ユーザーを更新できませんでした'), 'フラッシュメッセージ「ユーザーを更新できませんでした」が表示されていません'
+    expect(page).to have_content('メールアドレスを入力してください'), 'エラーメッセージ「メールアドレスを入力してください」が表示されていません'
+    expect(page).to have_content('姓を入力してください'), 'エラーメッセージ「姓を入力してください」が表示されていません'
+    expect(page).to have_content('名を入力してください'), 'エラーメッセージ「名を入力してください」が表示されていません'
   end
 
 end
