@@ -205,7 +205,7 @@ RSpec.describe '掲示板', type: :system do
           visit boards_path
           click_on 'ブックマーク一覧'
           expect(current_path).to eq bookmarks_boards_path
-          expect(page).to have_content 'ブックマーク中の掲示板がありません'
+          expect(page).to have_content('ブックマーク中の掲示板がありません'), 'ブックマーク中の掲示板が一件もない場合、「ブックマーク中の掲示板がありません」というメッセージが表示されていません'
         end
       end
 
