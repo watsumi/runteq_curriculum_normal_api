@@ -46,7 +46,7 @@ RSpec.describe '掲示板', type: :system do
             it 'ページングが表示されること' do
               login_as_general
               visit boards_path
-              expect(page).to have_selector('.pagination')
+              expect(page).to have_selector('.pagination'), '掲示板一覧画面においてコメントが21件以上ある場合にページネーションのリンクが表示されていません'
             end
           end
         end
@@ -228,7 +228,7 @@ RSpec.describe '掲示板', type: :system do
           end
           login_as_user user
           visit bookmarks_boards_path
-          expect(page).to have_selector('.pagination')
+          expect(page).to have_selector('.pagination'), 'ブックマーク一覧画面において掲示板が21件以上ある場合、ページネーションが表示されていません'
         end
       end
     end
