@@ -148,7 +148,7 @@ RSpec.describe '共通系', type: :system do
         describe '掲示板一覧' do
           it '正しいタイトルが表示されていること' do
             visit admin_boards_path
-            expect(page).to have_title '掲示板一覧 | RUNTEQ BOARD APP(管理画面)'
+            expect(page).to have_title('掲示板一覧 | RUNTEQ BOARD APP(管理画面)'), '管理画面の掲示板一覧画面のタイトルが「掲示板一覧 | RUNTEQ BOARD APP(管理画面)」ではありません'
           end
         end
 
@@ -156,7 +156,7 @@ RSpec.describe '共通系', type: :system do
           it '正しいタイトルが表示されていること' do
             board = create(:board)
             visit admin_board_path(board)
-            expect(page).to have_title '掲示板詳細 | RUNTEQ BOARD APP(管理画面)'
+            expect(page).to have_title('掲示板詳細 | RUNTEQ BOARD APP(管理画面)'), '管理画面の掲示板詳細画面のタイトルが「掲示板詳細 | RUNTEQ BOARD APP(管理画面)」ではありません'
           end
         end
 
@@ -164,14 +164,14 @@ RSpec.describe '共通系', type: :system do
           it '正しいタイトルが表示されていること' do
             board = create(:board)
             visit edit_admin_board_path(board)
-            expect(page).to have_title '掲示板編集 | RUNTEQ BOARD APP(管理画面)'
+            expect(page).to have_title('掲示板編集 | RUNTEQ BOARD APP(管理画面)'), '管理画面の掲示板編集画面のタイトルが「掲示板編集 | RUNTEQ BOARD APP(管理画面)」ではありません'
           end
         end
 
         describe 'ユーザー一覧' do
           it '正しいタイトルが表示されていること' do
             visit admin_users_path
-            expect(page).to have_title 'ユーザー一覧 | RUNTEQ BOARD APP(管理画面)'
+            expect(page).to have_title('ユーザー一覧 | RUNTEQ BOARD APP(管理画面)'), '管理画面のユーザー一覧画面のタイトルが「ユーザー一覧 | RUNTEQ BOARD APP(管理画面)」ではありません'
           end
         end
 
@@ -179,7 +179,7 @@ RSpec.describe '共通系', type: :system do
           it '正しいタイトルが表示されていること' do
             user = create(:user)
             visit admin_user_path(user)
-            expect(page).to have_title 'ユーザー詳細 | RUNTEQ BOARD APP(管理画面)'
+            expect(page).to have_title('ユーザー詳細 | RUNTEQ BOARD APP(管理画面)'), '管理画面のユーザー詳細画面のタイトルが「ユーザー詳細 | RUNTEQ BOARD APP(管理画面)」ではありません'
           end
         end
 
@@ -187,7 +187,7 @@ RSpec.describe '共通系', type: :system do
           it '正しいタイトルが表示されていること' do
             user = create(:user)
             visit edit_admin_user_path(user)
-            expect(page).to have_title 'ユーザー編集 | RUNTEQ BOARD APP(管理画面)'
+            expect(page).to have_title('ユーザー編集 | RUNTEQ BOARD APP(管理画面)'), '管理画面のユーザー編集画面のタイトルが「ユーザー編集 | RUNTEQ BOARD APP(管理画面)」ではありません'
           end
         end
       end
