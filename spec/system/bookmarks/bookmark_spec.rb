@@ -13,7 +13,7 @@ RSpec.describe 'ブックマーク', type: :system do
     visit boards_path
     find("#js-bookmark-button-for-board-#{board.id}").click
     expect(current_path).to eq boards_path
-    expect(page).to have_content 'ブックマークしました'
+    expect(page).to have_content('ブックマークしました'), 'フラッシュメッセージ「ブックマークしました」が表示されていません'
   end
 
   it 'ブックマークを外せること' do
@@ -23,6 +23,6 @@ RSpec.describe 'ブックマーク', type: :system do
     # ブックマークを外す
     find("#js-bookmark-button-for-board-#{board.id}").click
     expect(current_path).to eq boards_path
-    expect(page).to have_content 'ブックマークを外しました'
+    expect(page).to have_content('ブックマークを外しました'), 'フラッシュメッセージ「ブイックマークを外しました」が表示されていません'
   end
 end
