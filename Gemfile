@@ -33,9 +33,16 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'faker'
+  gem 'factory_bot_rails'
+  # 変更しないでください
+  gem 'rubocop'
+  gem 'rubocop-rails'
+  gem 'rubocop-checkstyle_formatter'
+  gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
+  ## ここまで
 end
 
 group :development do
@@ -50,11 +57,8 @@ group :development do
 end
 
 group :test do
-  gem 'factory_bot_rails'
-  gem 'rspec-rails'
   gem 'capybara'
   gem 'webdrivers'
-  gem 'rspec_junit_formatter'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
