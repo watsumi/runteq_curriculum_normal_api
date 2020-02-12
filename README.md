@@ -1,41 +1,54 @@
-# README
-RUNTEQの基礎編カリキュラムのリポジトリ
+# 学習カリキュラム 基礎編
 
-## Features
+基礎編カリキュラムのリポジトリです
 
-### Ruby Version
-- See `.ruby-version`.
+## Ruby version
+
+* 2.6.4
 
 ## Rails version
 
-- See `Gemfile`.
+* 5.2.3
+
+## System dependencies
+
+* MySQL 5.7
+* Node.js >= v12.14.0
+* Yarn >= 1.19.2
 
 ## Project initiation
 
-- リポジトリのクローン
+* Gemのインストール
 
-```bash
-$ git@github.com:startup-technology/runteq_curriculum_normal.git
+```
+$ bundle install --path=vendor/bundle
 ```
 
-- Gemのインストール
+* npmのインストール
 
-```bash
-$ bundle install --path vendor/bundle
 ```
-
-- npmのインストール
-
-```bash
 $ yarn install
 ```
 
-### Configuration
+## Configuration
 
-*ファイルの中身はご自身の環境に合わせて適宜変更してください*
+ファイルの中身はご自身の環境に合わせて適宜変更してください
 
-- データベースの設定
+* データベースの設定
 
-```bash
+```
 $ cp config/database.yml.default config/database.yml
+```
+
+
+## Database creation
+
+```
+$ bundle exec rails db:reset
+```
+
+## Run rails server
+
+```
+$ bundle exec rails server
 ```
