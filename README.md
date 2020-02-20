@@ -21,7 +21,7 @@
 * Gemのインストール
 
 ```
-$ bundle install --path=vendor/bundle
+$ bundle install --path vendor/bundle
 ```
 
 * npmのインストール
