@@ -53,8 +53,8 @@ RSpec.describe '検索機能', type: :system do
       board2
       board3
       board4
-      login_user.bookmark(board1)
-      login_user.bookmark(board4)
+      login_user.bookmarks.create(board: board1)
+      login_user.bookmarks.create(board: board4)
       visit bookmarks_boards_path
     end
     context '検索条件に該当する掲示板がある場合' do
