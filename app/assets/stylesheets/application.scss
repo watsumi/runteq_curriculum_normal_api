@@ -1,0 +1,17 @@
+@import 'top';
+@import 'bootstrap';
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+.facebook-button {
+  color: white;
+  background-color: #4266b2;
+  padding: 1rem 3rem;
+  display: inline-block;
+  border-radius: 10px;
+  &:hover {
+    color: white;
+    text-decoration: none;
+    opacity: 0.8;
+  }
+}

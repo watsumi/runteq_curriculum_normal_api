@@ -32,6 +32,30 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'bootstrap', '~> 4.3.1'
+gem 'font-awesome-sass', '~> 5.11.2'
+gem 'jquery-rails'
+
+gem 'sorcery'
+gem 'pry-byebug'
+
+gem 'rails-i18n'
+gem 'draper'
+
+gem 'carrierwave'
+
+gem 'kaminari'
+
+gem 'ransack'
+
+gem 'config'
+
+gem 'enum_help'
+
+gem 'exception_notification'
+
+gem 'slack-notifier'
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'faker'
@@ -52,6 +76,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'letter_opener_web', '~> 1.0'
 end
 
 group :test do

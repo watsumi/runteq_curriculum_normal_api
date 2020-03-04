@@ -1,0 +1,8 @@
+default_url_options:
+  host: 'localhost:3000'
+slack:
+  exception_notification_channel: '#通知'
+sorcery:
+  facebook:
+    key: <%= Rails.application.credentials.dig(:sorcery, :facebook, :key) %>
+    secret: <%= Rails.application.credentials.dig(:sorcery, :facebook, :secret) %>
