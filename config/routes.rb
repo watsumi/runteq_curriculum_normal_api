@@ -29,4 +29,10 @@ Rails.application.routes.draw do
     resources :boards, only: %i[index edit update show destroy]
     resources :users, only: %i[index edit update show destroy]
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :users
+    end
+  end
 end
