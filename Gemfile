@@ -56,6 +56,9 @@ gem 'exception_notification'
 
 gem 'slack-notifier'
 
+gem 'active_model_serializers', '~> 0.10.0'
+gem 'rack-cors'
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'faker'
