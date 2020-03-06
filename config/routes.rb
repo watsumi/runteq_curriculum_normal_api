@@ -32,7 +32,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :users
+      resources :users do
+        collection do
+          get :me
+        end
+      end
       resource :user_session
     end
   end

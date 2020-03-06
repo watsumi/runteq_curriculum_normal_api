@@ -15,6 +15,14 @@ class Api::V1::UsersController < Api::V1::BaseController
     render json: user
   end
 
+  def me
+    if current_user
+      render json: current_user
+    else
+      head :not_found
+    end
+  end
+
   private
 
   def user_params
