@@ -38,6 +38,7 @@ Rails.application.routes.draw do
         end
       end
       resource :user_session
+      resources :boards
     end
   end
 end
